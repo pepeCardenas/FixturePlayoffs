@@ -15,12 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "El Simulador de Otro La Travaladna",
   description: "Simulador de torneo de fútbol argentino",
-  viewport: {
-    width: "device-width",
-    initialScale: 0.5,
-    maximumScale: 1,
-    userScalable: false,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 0.5,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
