@@ -35,36 +35,45 @@ export default function RootLayout({
         <style>{`
           @media screen and (max-width: 768px) and (orientation: portrait) {
             .landscape-warning {
-              display: flex;
-              position: fixed;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              background: rgba(0, 0, 0, 0.95);
-              color: white;
-              justify-content: center;
-              align-items: center;
-              z-index: 9999;
-              flex-direction: column;
-              padding: 20px;
-              text-align: center;
+              display: flex !important;
             }
-            .landscape-warning svg {
-              width: 80px;
-              height: 80px;
-              margin-bottom: 20px;
-              animation: rotate 2s ease-in-out infinite;
-            }
-            @keyframes rotate {
-              0%, 100% { transform: rotate(0deg); }
-              50% { transform: rotate(90deg); }
+            .main-content {
+              display: none !important;
             }
           }
           @media screen and (max-width: 768px) and (orientation: landscape) {
             .landscape-warning {
-              display: none;
+              display: none !important;
             }
+            .main-content {
+              display: block !important;
+            }
+          }
+          .landscape-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+          }
+          .landscape-warning svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: rotate 2s ease-in-out infinite;
+          }
+          @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(90deg); }
           }
         `}</style>
       </head>
@@ -78,7 +87,9 @@ export default function RootLayout({
           <h2 style={{fontSize: '24px', marginBottom: '10px'}}>Por favor, rota tu dispositivo</h2>
           <p style={{fontSize: '16px', opacity: 0.8}}>Esta aplicación funciona mejor en modo horizontal</p>
         </div>
-        {children}
+        <div className="main-content">
+          {children}
+        </div>
       </body>
     </html>
   );
