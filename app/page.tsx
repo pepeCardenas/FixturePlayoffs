@@ -621,18 +621,18 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen items-start justify-center bg-gray-100 font-sans py-8">
-      <main className="flex flex-col items-center w-full max-w-[1400px] p-6 bg-white shadow-md rounded-lg">
-        <div className="flex items-center justify-between w-full mb-8">
-          <h1 className="text-4xl font-bold text-center flex-1 text-black">El Simulador de Otro La Travaladna</h1>
+    <div className="flex min-h-screen items-start justify-center bg-gray-100 font-sans py-2 md:py-8">
+      <main className="flex flex-col items-center w-full max-w-[1400px] p-2 md:p-6 bg-white shadow-md rounded-lg">
+        <div className="flex items-center justify-between w-full mb-2 md:mb-8 flex-wrap gap-2">
+          <h1 className="text-lg md:text-4xl font-bold text-center flex-1 text-black">El Simulador de Otro La Travaladna</h1>
           <button
             onClick={handleReset}
-            className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold shadow-md"
+            className="px-3 py-1 md:px-6 md:py-2 text-xs md:text-base bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold shadow-md"
           >
             Reiniciar
           </button>
         </div>
-        <div className="w-full flex flex-row items-start justify-center gap-4">
+        <div className="w-full flex flex-row items-start justify-center gap-1 md:gap-4 overflow-x-auto">
           {/* Lado izquierdo (extremo izquierdo) */}
           {leftBracket.columns}
           {/* Lado derecho (extremo derecho) */}
@@ -640,7 +640,7 @@ export default function Home() {
         </div>
         
         {/* Posiciones finales */}
-        <div className="w-full flex flex-row items-start justify-center gap-8 mt-12">
+        <div className="w-full flex flex-row items-start justify-center gap-2 md:gap-8 mt-4 md:mt-12 overflow-x-auto">
           {/* 1er Puesto */}
           <div className="flex flex-col items-center">
             <div className="text-sm font-semibold text-gray-600 mb-2">🥇 1º Puesto</div>
