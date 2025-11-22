@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 export const viewport = {
   width: "device-width",
-  initialScale: 0.5,
-  maximumScale: 1,
-  userScalable: false,
+  initialScale: 0.4,
+  maximumScale: 2,
+  userScalable: true,
 };
 
 export default function RootLayout({
@@ -34,20 +34,36 @@ export default function RootLayout({
       <head>
         <style>{`
           @media screen and (max-width: 768px) and (orientation: portrait) {
-            body {
-              transform: rotate(90deg);
-              transform-origin: left top;
-              width: 100vh;
-              height: 100vw;
-              overflow-x: hidden;
-              position: absolute;
-              top: 100%;
+            .landscape-warning {
+              display: flex;
+              position: fixed;
+              top: 0;
               left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba(0, 0, 0, 0.95);
+              color: white;
+              justify-content: center;
+              align-items: center;
+              z-index: 9999;
+              flex-direction: column;
+              padding: 20px;
+              text-align: center;
+            }
+            .landscape-warning svg {
+              width: 80px;
+              height: 80px;
+              margin-bottom: 20px;
+              animation: rotate 2s ease-in-out infinite;
+            }
+            @keyframes rotate {
+              0%, 100% { transform: rotate(0deg); }
+              50% { transform: rotate(90deg); }
             }
           }
-          @media screen and (max-width: 768px) {
-            html {
-              overflow: hidden;
+          @media screen and (max-width: 768px) and (orientation: landscape) {
+            .landscape-warning {
+              display: none;
             }
           }
         `}</style>
@@ -55,6 +71,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="landscape-warning">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <h2 style={{fontSize: '24px', marginBottom: '10px'}}>Por favor, rota tu dispositivo</h2>
+          <p style={{fontSize: '16px', opacity: 0.8}}>Esta aplicación funciona mejor en modo horizontal</p>
+        </div>
         {children}
       </body>
     </html>
